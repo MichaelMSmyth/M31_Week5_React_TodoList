@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 // UUID is a 3rd party module for unique id's as the 'crypto' node core module don't work in React for some reason
 import { uuid } from "uuidv4"; 
+import { TodoList } from "./components/TodoList";
 
 const LOCAL_STORAGE_KEY = "todoApp.todos"; 
 
@@ -51,29 +52,6 @@ export default function App() {
     </>
   );
 
-  function Todo({ todo, toggleTodo }) {
-    function handleTodoClick() {
-      toggleTodo(todo.id);
-    }
-
-    return (
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={todo.complete}
-            onChange={handleTodoClick}
-          />
-          {todo.name}
-        </label>
-      </div>
-    );
-  }
-
-// The Todo component which is nested in the Todo list
-  function TodoList({ todos, toggleTodo }) {
-    return todos.map((todo) => {
-      return <Todo key={todo.id} toggleTodo={toggleTodo} todo={todo} />;
-    });
-  }
 }
+
+
